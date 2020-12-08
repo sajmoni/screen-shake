@@ -23,16 +23,16 @@ const q = quake()
 Configuration options
  
 ```js
- quake = ({
+ quake({
    // The maximum amount of angle movement. 
-  maxAngle = MAX_ANGLE,
-  // The maximum amount of x offset movement.
-  maxOffsetX = MAX_OFFSET,
-  // The maximum amount of y offset movement.
-  maxOffsetY = MAX_OFFSET,
-  // How much trauma is reduced per update. Tweak this if you want to change the duration of the screen shake.  
-  traumaReductionPerUpdate = TRAUMA_REDUCTION_PER_UPDATE,
-} 
+   maxAngle = MAX_ANGLE,
+   // The maximum amount of x offset movement.
+   maxOffsetX = MAX_OFFSET,
+   // The maximum amount of y offset movement.
+   maxOffsetY = MAX_OFFSET,
+   // How much trauma is reduced per update. Tweak this if you want to change the duration of the screen shake.  
+   traumaReductionPerUpdate = TRAUMA_REDUCTION_PER_UPDATE,
+ }) 
 ```
 
 The quake instance has two methods:
@@ -51,13 +51,13 @@ The maximum amount you can add is 1 (equal to 100% trauma).
 
 Call this on every update of your game loop.
 
-Has one argument, the `time` since update was first called. This is used to smoothly interpolate the noise. 
+Has one argument, the `time` since update was first called. (This is used to smoothly interpolate the noise) 
 
-Returns an object the values to apply to your camera:
+Returns an object with the values to apply to your camera:
 
-  - angle: Current angle. Set as your camera angle,
-  - offsetX: Add this to your cameras x position,
-  - offsetY: Add this to your cameras y position,
+  - `angle` Current angle. Set as your camera angle.
+  - `offsetX` Add this to your cameras x position.
+  - `offsetY` Add this to your cameras y position.
 
 ### example
 
@@ -65,16 +65,16 @@ Returns an object the values to apply to your camera:
 import quake from 'quake'
 
 // Create the quake instance. Configuration is optional.
-const q = quake()
+const screenShake = quake()
 
 if (projectileHit) {
   // Add 10% trauma when hit
-  q.add(0.1)
+  screenShake.add(0.1)
 }
 
 let time = 1
 gameLoop(() => {
-  const { angle, offsetX, offsetY } = q.update(time)
+  const { angle, offsetX, offsetY } = screenShake.update(time)
   
   camera.angle = angle
   camera.position.x += offsetX
