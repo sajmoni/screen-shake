@@ -63,7 +63,7 @@ Returns an object with the values to apply to your camera:
 ```ts
 import createScreenShake from 'screen-shake'
 
-// Create the quake instance. Configuration is optional.
+// Create the instance. Configuration is optional.
 const screenShake = createScreenShake()
 
 if (projectileHit) {

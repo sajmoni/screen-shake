@@ -13,7 +13,7 @@ type UpdateResult = {
   offsetY: number
 }
 
-type QuakeInstance = {
+type ScreenShakeInstance = {
   add: (trauma: number) => void
   update: (time: number) => UpdateResult
 }
@@ -23,7 +23,7 @@ const createScreenShake = ({
   maxOffsetX = 30,
   maxOffsetY = 30,
   traumaReductionPerUpdate = 0.03,
-}: Options = {}): QuakeInstance => {
+}: Options = {}): ScreenShakeInstance => {
   let currentTrauma = 0
 
   const anglePerlin = new Perlin()
