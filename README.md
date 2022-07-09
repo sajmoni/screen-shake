@@ -15,9 +15,9 @@ Features:
 You first need to create an instance by using the default export
 
 ```ts
-import createScreenShake from "screen-shake";
+import createScreenShake from 'screen-shake'
 
-const screenShake = createScreenShake();
+const screenShake = createScreenShake()
 ```
 
 Configuration options
@@ -32,7 +32,7 @@ createScreenShake({
   maxOffsetY = 30,
   // How much trauma is reduced per update. Tweak this if you want to change the duration of the screen shake.
   traumaReductionPerUpdate = 0.03,
-});
+})
 ```
 
 The screen shake instance has two methods:
@@ -60,26 +60,26 @@ Returns an object with the values to apply to your camera:
 ### example
 
 ```ts
-import createScreenShake from "screen-shake";
+import createScreenShake from 'screen-shake'
 
 // Create the quake instance. Configuration is optional.
-const screenShake = createScreenShake();
+const screenShake = createScreenShake()
 
 if (projectileHit) {
   // Add 10% trauma when hit
-  screenShake.add(0.1);
+  screenShake.add(0.1)
 }
 
-let time = 1;
+let time = 1
 gameLoop(() => {
-  const { angle, offsetX, offsetY } = screenShake.update(time);
+  const { angle, offsetX, offsetY } = screenShake.update(time)
 
-  camera.angle = angle;
-  camera.position.x += offsetX;
-  camera.position.y += offsetY;
+  camera.angle = angle
+  camera.position.x += offsetX
+  camera.position.y += offsetY
 
-  time++;
-});
+  time++
+})
 ```
 
 ### recipes
@@ -89,7 +89,7 @@ Initialize the screen shake instance in a file and export the instance.
 `screenShake.ts`
 
 ```ts
-import quake from "quake";
+import quake from 'quake'
 
-export default quake();
+export default quake()
 ```
