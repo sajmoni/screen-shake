@@ -1,9 +1,5 @@
 import Perlin from 'perlin-simplex'
 
-const MAX_ANGLE = 10
-const MAX_OFFSET = 30
-const TRAUMA_REDUCTION_PER_UPDATE = 0.03
-
 type Options = {
   maxAngle?: number
   maxOffsetX?: number
@@ -22,13 +18,14 @@ type QuakeInstance = {
   update: (time: number) => UpdateResult
 }
 
-const quake = ({
-  maxAngle = MAX_ANGLE,
-  maxOffsetX = MAX_OFFSET,
-  maxOffsetY = MAX_OFFSET,
-  traumaReductionPerUpdate = TRAUMA_REDUCTION_PER_UPDATE,
+const createScreenShake = ({
+  maxAngle = 10,
+  maxOffsetX = 30,
+  maxOffsetY = 30,
+  traumaReductionPerUpdate = 0.03,
 }: Options = {}): QuakeInstance => {
   let currentTrauma = 0
+
   const anglePerlin = new Perlin()
   const offsetXPerlin = new Perlin()
   const offsetYPerlin = new Perlin()
@@ -54,4 +51,4 @@ const quake = ({
   }
 }
 
-export default quake
+export default createScreenShake
