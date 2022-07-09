@@ -9,6 +9,7 @@ Features:
 - :+1: Works with any JS/TS rendering library or game engine
 - :yum: Uses `Perlin noise` and `exponential trauma` for a more satisfying shake
 - :zap: Less than 50 LOC and only 1 dependency
+- Fully typed
 
 ## API:
 
@@ -30,7 +31,7 @@ createScreenShake({
   maxOffsetX = 30,
   // The maximum amount of y offset movement.
   maxOffsetY = 30,
-  // How much trauma is reduced per update. Tweak this if you want to change the duration of the screen shake.
+  // How much trauma is reduced per update. Tweak this if you want to change the duration of the screen shake. A higher value means a shorter duration.
   traumaReductionPerUpdate = 0.03,
 })
 ```
@@ -57,7 +58,7 @@ Returns an object with the values to apply to your camera:
 - `offsetX` _Add_ this to your cameras x position.
 - `offsetY` _Add_ this to your cameras y position.
 
-### example
+### Example
 
 ```ts
 import createScreenShake from 'screen-shake'
@@ -82,14 +83,14 @@ gameLoop(() => {
 })
 ```
 
-### recipes
+### Recipes
 
 Initialize the screen shake instance in a file and export the instance.
 
 `screenShake.ts`
 
 ```ts
-import quake from 'quake'
+import createScreenShake from 'screen-shake'
 
-export default quake()
+export default createScreenShake()
 ```
