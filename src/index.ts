@@ -1,5 +1,4 @@
-// @ts-expect-error
-import Perlin from 'perlin-simplex'
+import createNoise from './noise'
 
 type Options = {
   maxAngle?: number
@@ -27,9 +26,9 @@ const createScreenShake = ({
 }: Options = {}): ScreenShakeInstance => {
   let currentTrauma = 0
 
-  const anglePerlin = new Perlin()
-  const offsetXPerlin = new Perlin()
-  const offsetYPerlin = new Perlin()
+  const anglePerlin = createNoise()
+  const offsetXPerlin = createNoise()
+  const offsetYPerlin = createNoise()
 
   return {
     add: (trauma: number): void => {
