@@ -1,3 +1,11 @@
+/**
+ * This is a tweaked version of the `perlin-simplex` library https://github.com/davidguttman/perlin-simplex
+ *  - It works with ESM
+ *  - Does not modify prototype
+ *  - Type-safe
+ *  - Redundant things such as 3D noise have been removed
+ */
+
 const createNoise = (getRandomNumber?: () => number) => {
   if (getRandomNumber === undefined) getRandomNumber = Math.random
 

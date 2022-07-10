@@ -8,8 +8,8 @@ Features:
 
 - :+1: Works with any JS/TS rendering library or game engine
 - :yum: Uses `Perlin noise` and `exponential trauma` for a more satisfying shake
-- :zap: Less than 50 LOC and only 1 dependency
-- Fully typed
+- :zap: Less than `50` lines of code and `0` dependencies
+- :safety_vest: Fully typed
 
 ## API:
 
