@@ -1,3 +1,4 @@
+// @ts-expect-error
 import Perlin from 'perlin-simplex'
 
 type Options = {
