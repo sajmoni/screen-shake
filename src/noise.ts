@@ -1,5 +1,5 @@
-const createNoise = (randomGenerator?: any) => {
-  if (randomGenerator == undefined) randomGenerator = Math
+const createNoise = (getRandomNumber?: () => number) => {
+  if (getRandomNumber === undefined) getRandomNumber = Math.random
 
   const grad3 = [
     [1, 1, 0],
@@ -17,7 +17,7 @@ const createNoise = (randomGenerator?: any) => {
   ]
   const p = []
   for (let i = 0; i < 256; i++) {
-    p[i] = Math.floor(randomGenerator.random() * 256)
+    p[i] = Math.floor(getRandomNumber() * 256)
   }
   // To remove the need for index wrapping, double the permutation table length
   const perm: any[] = []
