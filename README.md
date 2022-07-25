@@ -8,10 +8,10 @@ Features:
 
 - :+1: Works with any JS/TS rendering library or game engine
 - :yum: Uses `Perlin noise` and `exponential trauma` for a more satisfying shake
-- :zap: Less than `50` lines of code and `0` dependencies
+- :zap: Around `700b` and `0` dependencies
 - :safety_vest: Fully typed
 
-## API:
+## API
 
 You first need to create an instance by using the default export
 
@@ -54,9 +54,9 @@ Has one argument, the `time` since update was first called. (This is used to smo
 
 Returns an object with the values to apply to your camera:
 
-- `angle` Current angle. _Set_ as your camera angle.
-- `offsetX` _Add_ this to your cameras x position.
-- `offsetY` _Add_ this to your cameras y position.
+- `angle` _Set_ it to the cameras angle
+- `offsetX` _Add_ it to the cameras x position
+- `offsetY` _Add_ it to the cameras y position
 
 ### Example
 
@@ -83,7 +83,15 @@ gameLoop(() => {
 })
 ```
 
+### :package: Install
+
+```sh
+npm install screen-shake
+```
+
 ### Recipes
+
+#### Export instance from file
 
 Initialize the screen shake instance in a file and export the instance.
 
@@ -93,4 +101,14 @@ Initialize the screen shake instance in a file and export the instance.
 import createScreenShake from 'screen-shake'
 
 export default createScreenShake()
+```
+
+#### Change screen shake speed
+
+Modify `time` before passing it to `update`
+
+Example with 50% speed:
+
+```ts
+screenShake.update(time * 0.5)
 ```
