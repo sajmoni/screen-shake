@@ -22,7 +22,7 @@ const createScreenShake = ({
   maxAngle = 10,
   maxOffsetX = 30,
   maxOffsetY = 30,
-  traumaReductionPerUpdate = 0.03,
+  traumaReductionPerUpdate = 0.02,
 }: Options = {}): ScreenShakeInstance => {
   let currentTrauma = 0
 
