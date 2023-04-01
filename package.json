@@ -25,10 +25,10 @@
   "homepage": "https://github.com/sajmoni/screen-shake#readme",
   "prettier": "prettier-config-one",
   "devDependencies": {
-    "np": "^7.6.2",
-    "prettier": "^2.7.1",
-    "prettier-config-one": "^0.1.0",
-    "tsconfig-one": "^0.0.2",
-    "typescript": "^4.7.4"
+    "np": "^7.7.0",
+    "prettier": "^2.8.7",
+    "prettier-config-one": "^0.1.1",
+    "tsconfig-one": "^0.0.4",
+    "typescript": "^5.0.3"
   }
 }
