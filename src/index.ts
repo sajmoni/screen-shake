@@ -1,29 +1,29 @@
 import createNoise from './noise'
 
-type Options = {
+export type ScreenShakeOptions = {
   maxAngle?: number
   maxOffsetX?: number
   maxOffsetY?: number
   traumaReductionPerUpdate?: number
 }
 
-type UpdateResult = {
+export type ScreenShakeUpdateResult = {
   angle: number
   offsetX: number
   offsetY: number
 }
 
-type ScreenShakeInstance = {
+export type ScreenShakeInstance = {
   add: (trauma: number) => void
-  update: (time: number) => UpdateResult
+  update: (time: number) => ScreenShakeUpdateResult
 }
 
-const createScreenShake = ({
+export default function createScreenShake({
   maxAngle = 10,
   maxOffsetX = 30,
   maxOffsetY = 30,
   traumaReductionPerUpdate = 0.02,
-}: Options = {}): ScreenShakeInstance => {
+}: ScreenShakeOptions = {}): ScreenShakeInstance {
   let currentTrauma = 0
 
   const anglePerlin = createNoise()
@@ -34,7 +34,7 @@ const createScreenShake = ({
     add: (trauma: number): void => {
       currentTrauma = Math.min(currentTrauma + trauma, 1)
     },
-    update: (time: number): UpdateResult => {
+    update: (time: number): ScreenShakeUpdateResult => {
       const shake = currentTrauma ** 2
       const angle = maxAngle * shake * anglePerlin.noise(time, 1)
       const offsetX = maxOffsetX * shake * offsetXPerlin.noise(time, 1)
@@ -50,5 +50,3 @@ const createScreenShake = ({
     },
   }
 }
-
-export default createScreenShake
