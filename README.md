@@ -1,10 +1,10 @@
 # screen-shake
 
-Screen shake for JavaScript / TypeScript games.
+> Screen shake for JavaScript / TypeScript games
 
 Based on [this GDC talk by Squirrel Eiserloh](https://www.youtube.com/watch?v=tu-Qe66AvtY)
 
-Features:
+## :sparkles: Features
 
 - :+1: Works with any JS/TS rendering library or game engine
 - :yum: Uses `Perlin noise` and `exponential trauma` for a more satisfying shake
@@ -52,11 +52,11 @@ Call this on every update of your game loop.
 
 Has one argument, the `time` since update was first called. (This is used to smoothly interpolate the noise)
 
-Returns an object with the values to apply to your camera:
+Returns an object with the values to add to your camera:
 
-- `angle` _Set_ it to the cameras angle
-- `offsetX` _Add_ it to the cameras x position
-- `offsetY` _Add_ it to the cameras y position
+- `angle` - Add it to the cameras angle
+- `offsetX` - Add it to the cameras x position
+- `offsetY` - Add it to the cameras y position
 
 ### Example
 
@@ -72,26 +72,34 @@ if (projectileHit) {
 }
 
 let time = 1
+
+// Save a copy of the camera at the original position
+const baseCamera = {
+  angle: camera.angle,
+  x: camera.x
+  y: camera.y
+}
+
 gameLoop(() => {
   const { angle, offsetX, offsetY } = screenShake.update(time)
 
-  camera.angle = angle
-  camera.position.x += offsetX
-  camera.position.y += offsetY
+  camera.angle = baseCamera.angle + angle
+  camera.position.x = baseCamera.x + offsetX
+  camera.position.y = baseCamera.y + offsetY
 
   time++
 })
 ```
 
-### :package: Install
+## :package: Install
 
 ```sh
 npm install screen-shake
 ```
 
-### Recipes
+## :book: Recipes
 
-#### Export instance from file
+### Export instance from file
 
 Initialize the screen shake instance in a file and export the instance.
 
@@ -103,7 +111,7 @@ import createScreenShake from 'screen-shake'
 export default createScreenShake()
 ```
 
-#### Change screen shake speed
+### Change screen shake speed
 
 Modify `time` before passing it to `update`
 
