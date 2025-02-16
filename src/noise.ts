@@ -6,9 +6,7 @@
  *  - Redundant things such as 3D noise have been removed
  */
 
-const createNoise = (getRandomNumber?: () => number) => {
-  if (getRandomNumber === undefined) getRandomNumber = Math.random
-
+const createNoise = (seed: number) => {
   const grad3 = [
     [1, 1, 0],
     [-1, 1, 0],
@@ -25,7 +23,7 @@ const createNoise = (getRandomNumber?: () => number) => {
   ]
   const p = []
   for (let i = 0; i < 256; i++) {
-    p[i] = Math.floor(getRandomNumber() * 256)
+    p[i] = Math.floor(seed * 256)
   }
   // To remove the need for index wrapping, double the permutation table length
   const perm: any[] = []

@@ -10,6 +10,7 @@ Based on [this GDC talk by Squirrel Eiserloh](https://www.youtube.com/watch?v=tu
 - :yum: Uses `Perlin noise` and `exponential trauma` for a more satisfying shake
 - :zap: Around `700b` and `0` dependencies
 - :safety_vest: Fully typed
+- :seedling: Seeded
 
 ## API
 
@@ -33,6 +34,8 @@ createScreenShake({
   maxOffsetY = 30,
   // The amount of updates until trauma goes from 1 to 0
   duration = 50,
+  // A number between 0-1. For a predictable screen shake
+  seed,
 })
 ```
 
@@ -93,7 +96,7 @@ gameLoop(() => {
 
 ## :package: Install
 
-```sh
+```console
 npm install screen-shake
 ```
 

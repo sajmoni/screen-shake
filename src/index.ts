@@ -8,6 +8,10 @@ export type ScreenShakeOptions = {
    * The amount of updates until trauma goes from 1 to 0
    */
   duration?: number
+  /**
+   * A number between 0-1
+   */
+  seed?: number
 }
 
 export type ScreenShakeUpdateResult = {
@@ -26,12 +30,13 @@ export default function createScreenShake({
   maxOffsetX = 30,
   maxOffsetY = 30,
   duration = 50,
+  seed,
 }: ScreenShakeOptions = {}): ScreenShakeInstance {
   let currentTrauma = 0
 
-  const anglePerlin = createNoise()
-  const offsetXPerlin = createNoise()
-  const offsetYPerlin = createNoise()
+  const anglePerlin = createNoise(seed ?? Math.random())
+  const offsetXPerlin = createNoise(seed ?? Math.random())
+  const offsetYPerlin = createNoise(seed ?? Math.random())
   const traumaReductionPerUpdate = 1 / duration
 
   return {

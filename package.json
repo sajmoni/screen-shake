@@ -7,7 +7,7 @@
   "scripts": {
     "build": "rm -rf dist && tsc",
     "release": "npm run build && np --no-tests",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "vitest"
   },
   "repository": {
     "type": "git",
@@ -33,6 +33,7 @@
     "prettier": "2.8.8",
     "prettier-config-one": "0.1.1",
     "tsconfig-one": "0.0.4",
-    "typescript": "5.0.4"
+    "typescript": "5.0.4",
+    "vitest": "3.0.5"
   }
 }
