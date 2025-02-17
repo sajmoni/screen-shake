@@ -1,0 +1,10 @@
+{
+  "extends": "tsconfig-one/tsconfig.json",
+  "compilerOptions": {
+    "outDir": "dist",
+    "paths": { "~/*": ["./*"] },
+    "baseUrl": "./src",
+    "types": ["vite/client"],
+  },
+  "include": ["src"],
+}

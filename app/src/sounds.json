@@ -1,0 +1,8 @@
+{
+  "sound": {
+    "coin": "./coin.mp3"
+  },
+  "music": {
+    "bgm": "./bgm.mp3"
+  }
+}
