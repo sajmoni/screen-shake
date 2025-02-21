@@ -11,15 +11,12 @@
   ],
   "scripts": {
     "build": "vite build",
-    "deploy:production": "gh workflow run \"Deploy to production\"",
-    "deploy:staging": "gh workflow run \"Deploy to staging\"",
-    "dev": "alchemy-engine dev",
+    "dev": "vite --mode=production --open",
     "preview": "vite preview",
     "test": "vitest"
   },
   "devDependencies": {
     "nano-panel": "0.2.2",
-    "tsconfig-one": "0.0.10",
     "typescript": "5.7.3",
     "vitest": "3.0.5"
   },

@@ -7,7 +7,8 @@ import {
   createObjectPool,
 } from 'alchemy-engine'
 
-import { type Scene } from '~/type'
+import { type Scene } from '../../type'
+import createScreenShake from '../../../../src/index.js'
 import pause from './pause'
 
 export default async function game(scene: Scene) {
@@ -16,16 +17,29 @@ export default async function game(scene: Scene) {
     container,
     input: { isKeyDown, debouncedKey },
     state,
-    timer: { repeatEvery },
     timer,
-    useScreenShake,
     app,
   } = scene
 
   // Set center point in the middle to allow for screen shake
   container.pivot.set(app.screen.width / 2, app.screen.height / 2)
   container.position.set(app.screen.width / 2, app.screen.height / 2)
-  const screenShake = useScreenShake(container)
+
+  const screenShake = createScreenShake({
+    maxOffsetX: 200,
+    maxOffsetY: 200,
+    maxAngle: 30,
+    duration: 100,
+  })
+
+  timer.repeatEvery(1, (time) => {
+    const { angle, offsetX, offsetY } = screenShake.update(time * 0.01)
+
+    container.angle = container.angle + angle
+    container.position.x = container.x + offsetX
+    container.position.y = container.y + offsetY
+  })
+
   const background = graphics(container)
   background.rect(10, 10, 100, 100).fill({ color: '#cccccc', alpha: 1 })
   background.position.set(100, 100)
@@ -47,13 +61,13 @@ export default async function game(scene: Scene) {
     return sprite(container)
   })
   const s = spritePool.get()
-  s.texture = textures['./square-1']
+  s.texture = textures['square-1']
   s.label = 'small blue'
   s.position.set(200, 200)
 
   sync(_text, 'text', state, 'gold')
 
-  const s2 = sprite(container, textures['./square-1'])
+  const s2 = sprite(container, textures['square-1'])
   s2.anchor.set(1)
   s2.label = 'other name'
   s2.position.set(350, 250)
@@ -66,10 +80,10 @@ export default async function game(scene: Scene) {
     () => {
       screenShake.add(1)
     },
-    10,
+    1,
   )
 
-  repeatEvery(1, (_time, delta) => {
+  timer.repeatEvery(1, (_time, delta) => {
     if (isKeyDown(['a', 'ArrowLeft'])) {
       s.position.x -= 1 * delta
     }
