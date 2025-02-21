@@ -39,22 +39,34 @@ export default function createScreenShake({
   const offsetYPerlin = createNoise(seed ?? Math.random())
   const traumaReductionPerUpdate = 1 / duration
 
+  let latestScreenShake = {
+    angle: 0,
+    offsetX: 0,
+    offsetY: 0,
+  }
+
   return {
-    add: (trauma: number): void => {
+    add: (trauma: number) => {
       currentTrauma = Math.min(currentTrauma + trauma, 1)
     },
-    update: (time: number): ScreenShakeUpdateResult => {
+    update: (time: number) => {
+      const previousScreenShake = {
+        ...latestScreenShake,
+      }
+
       const shake = currentTrauma ** 2
+
       const angle = maxAngle * shake * anglePerlin.noise(time, 1)
       const offsetX = maxOffsetX * shake * offsetXPerlin.noise(time, 1)
       const offsetY = maxOffsetY * shake * offsetYPerlin.noise(time, 1)
 
       currentTrauma = Math.max(currentTrauma - traumaReductionPerUpdate, 0)
+      latestScreenShake = { angle, offsetX, offsetY }
 
       return {
-        angle,
-        offsetX,
-        offsetY,
+        angle: angle - previousScreenShake.angle,
+        offsetX: offsetX - previousScreenShake.offsetX,
+        offsetY: offsetY - previousScreenShake.offsetY,
       }
     },
   }
