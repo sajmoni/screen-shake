@@ -37,10 +37,10 @@ export default function createScreenShake({
   let currentTrauma = 0
 
   const random = new ParkMiller(seed ?? getRandomInt())
-  const randomValue = random.floatInRange(0, 1)
-  const anglePerlin = createNoise(randomValue)
-  const offsetXPerlin = createNoise(randomValue)
-  const offsetYPerlin = createNoise(randomValue)
+
+  const anglePerlin = createNoise(random.floatInRange(0, 1))
+  const offsetXPerlin = createNoise(random.floatInRange(0, 1))
+  const offsetYPerlin = createNoise(random.floatInRange(0, 1))
 
   const traumaReductionPerUpdate = 1 / duration
 
