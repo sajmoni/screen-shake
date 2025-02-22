@@ -34,7 +34,7 @@ createScreenShake({
   maxOffsetY = 30,
   // The amount of updates until trauma goes from 1 to 0
   duration = 50,
-  // A number between 0-1. For a predictable screen shake
+  // Set this for a predictable screen shake (useful for tests)
   seed,
 })
 ```

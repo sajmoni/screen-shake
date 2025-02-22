@@ -2,7 +2,7 @@ import { expect, test } from 'vitest'
 import createScreenShake, { type ScreenShakeUpdateResult } from '../src'
 
 test('Screen shake', async () => {
-  const screenShake = createScreenShake({ seed: 0.7476220180650175 })
+  const screenShake = createScreenShake({ seed: 999 })
   screenShake.add(1)
   const results: ScreenShakeUpdateResult[] = []
 

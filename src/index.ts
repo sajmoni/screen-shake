@@ -1,3 +1,5 @@
+import ParkMiller from 'park-miller'
+import getRandomInt from './getRandomInt'
 import createNoise from './noise'
 
 export type ScreenShakeOptions = {
@@ -34,9 +36,12 @@ export default function createScreenShake({
 }: ScreenShakeOptions = {}): ScreenShakeInstance {
   let currentTrauma = 0
 
-  const anglePerlin = createNoise(seed ?? Math.random())
-  const offsetXPerlin = createNoise(seed ?? Math.random())
-  const offsetYPerlin = createNoise(seed ?? Math.random())
+  const random = new ParkMiller(seed ?? getRandomInt())
+  const randomValue = random.floatInRange(0, 1)
+  const anglePerlin = createNoise(randomValue)
+  const offsetXPerlin = createNoise(randomValue)
+  const offsetYPerlin = createNoise(randomValue)
+
   const traumaReductionPerUpdate = 1 / duration
 
   let latestScreenShake = {
