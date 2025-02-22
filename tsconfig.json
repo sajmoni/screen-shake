@@ -1,9 +1,7 @@
 {
   "extends": "tsconfig-one/tsconfig.json",
   "compilerOptions": {
-    "outDir": "dist",
-    "incremental": false,
-    "declaration": true
+    "noEmit": true,
   },
-  "include": ["src", "test"]
+  "include": ["src", "test"],
 }
