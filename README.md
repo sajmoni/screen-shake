@@ -77,19 +77,12 @@ if (projectileHit) {
 
 let time = 1
 
-// Save a copy of the camera at the original position
-const baseCamera = {
-  angle: camera.angle,
-  x: camera.x
-  y: camera.y
-}
-
 gameLoop(() => {
   const { angle, offsetX, offsetY } = screenShake.update(time)
 
-  camera.angle = baseCamera.angle + angle
-  camera.position.x = baseCamera.x + offsetX
-  camera.position.y = baseCamera.y + offsetY
+  camera.angle = camera.angle + angle
+  camera.position.x = camera.x + offsetX
+  camera.position.y = camera.y + offsetY
 
   time++
 })
