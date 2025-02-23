@@ -1,6 +1,7 @@
 import ParkMiller from 'park-miller'
+import { createNoise2D } from 'simplex-noise'
+
 import getRandomInt from './getRandomInt'
-import createNoise from './noise'
 
 export type ScreenShakeOptions = {
   maxAngle?: number
@@ -38,9 +39,9 @@ export default function createScreenShake({
 
   const random = new ParkMiller(seed ?? getRandomInt())
 
-  const anglePerlin = createNoise(random.floatInRange(0, 1))
-  const offsetXPerlin = createNoise(random.floatInRange(0, 1))
-  const offsetYPerlin = createNoise(random.floatInRange(0, 1))
+  const anglePerlin = createNoise2D(() => random.floatInRange(0, 1))
+  const offsetXPerlin = createNoise2D(() => random.floatInRange(0, 1))
+  const offsetYPerlin = createNoise2D(() => random.floatInRange(0, 1))
 
   const traumaReductionPerUpdate = 1 / duration
 
@@ -61,9 +62,9 @@ export default function createScreenShake({
 
       const shake = currentTrauma ** 2
 
-      const angle = maxAngle * shake * anglePerlin.noise(time, 1)
-      const offsetX = maxOffsetX * shake * offsetXPerlin.noise(time, 1)
-      const offsetY = maxOffsetY * shake * offsetYPerlin.noise(time, 1)
+      const angle = maxAngle * shake * anglePerlin(time, 1)
+      const offsetX = maxOffsetX * shake * offsetXPerlin(time, 1)
+      const offsetY = maxOffsetY * shake * offsetYPerlin(time, 1)
 
       currentTrauma = Math.max(currentTrauma - traumaReductionPerUpdate, 0)
       latestScreenShake = { angle, offsetX, offsetY }

@@ -37,6 +37,7 @@
     "vitest": "3.0.5"
   },
   "dependencies": {
-    "park-miller": "2.0.0"
+    "park-miller": "2.0.0",
+    "simplex-noise": "4.0.3"
   }
 }
