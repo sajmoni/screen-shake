@@ -27,10 +27,10 @@ export type ScreenShakeInstance = {
 }
 
 export default function createScreenShake({
-  maxAngle = 10,
-  maxOffsetX = 30,
-  maxOffsetY = 30,
-  duration = 50,
+  maxAngle = 12,
+  maxOffsetX = 70,
+  maxOffsetY = 70,
+  duration = 28,
   seed,
   speed = 0.4,
 }: ScreenShakeOptions = {}): ScreenShakeInstance {
