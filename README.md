@@ -27,13 +27,14 @@ Configuration options
 ```ts
 createScreenShake({
   // The maximum amount of angle movement.
-  maxAngle = 10,
+  maxAngle = 12,
   // The maximum amount of x offset movement.
-  maxOffsetX = 30,
+  maxOffsetX = 70,
   // The maximum amount of y offset movement.
-  maxOffsetY = 30,
+  maxOffsetY = 70,
   // The amount of updates until trauma goes from 1 to 0
-  duration = 50,
+  duration = 28,
+  speed = 0.4,
   // Set this for a predictable screen shake (useful for tests)
   seed,
 })
@@ -98,28 +99,4 @@ gameLoop(() => {
 
 ```console
 npm install screen-shake
-```
-
-## :book: Recipes
-
-### Export instance from file
-
-Initialize the screen shake instance in a file and export the instance.
-
-`screenShake.ts`
-
-```ts
-import createScreenShake from 'screen-shake'
-
-export default createScreenShake()
-```
-
-### Change screen shake speed
-
-Modify `time` before passing it to `update`
-
-Example with 50% speed:
-
-```ts
-screenShake.update(time * 0.5)
 ```
