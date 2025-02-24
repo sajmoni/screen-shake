@@ -1,7 +1,7 @@
 import ParkMiller from 'park-miller'
 import { createNoise2D } from 'simplex-noise'
 
-import getRandomInt from './getRandomInt'
+import getRandomInt from './getRandomInt.js'
 
 export type ScreenShakeOptions = {
   maxAngle?: number
