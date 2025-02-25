@@ -30,11 +30,11 @@
   "prettier": "prettier-config-one",
   "devDependencies": {
     "np": "10.2.0",
-    "prettier": "3.5.1",
+    "prettier": "3.5.2",
     "prettier-config-one": "0.2.1",
     "tsconfig-one": "0.0.10",
     "typescript": "5.7.3",
-    "vitest": "3.0.5"
+    "vitest": "3.0.7"
   },
   "dependencies": {
     "park-miller": "2.0.0",
